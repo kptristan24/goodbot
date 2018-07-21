@@ -36,12 +36,16 @@ async def lul(*args):
 @client.event
 async def on_message(message):
 
+	if message.author == client.user:
+		return
+	if message.author.bot:
+		return
 	if hasNumbers(message.content):
 
 		newMessage = str(message.content)
 
 		newMessage.replace('5','4',1)
-		await client.send_message(message.channel, "It's lit baby")
+		await client.send_message(message.channel, "It's 420 somewhere")
 
 	await client.process_commands(message)
 	await asyncio.sleep(3)
