@@ -8,6 +8,13 @@ import config
 def hasNumbers(inputString):
 	return any(char.isdigit() for char in inputString)
 
+def getNumbers(str):
+	arr = []
+	for s in str.split():
+		if s.isdigit():
+			arr.append(s)
+	return arr
+
 client = Bot(description="goodbot", command_prefix="#", pm_help = False)
 
 @client.event
@@ -36,15 +43,18 @@ async def lul(*args):
 @client.event
 async def on_message(message):
 
+	#If the bot didn't send the message
 	if message.author == client.user:
 		return
 	if message.author.bot:
 		return
+
+	#if the message has numbers
 	if hasNumbers(message.content):
+		input = str(message.content)
 
-		newMessage = str(message.content)
+		temp = getNumbers(input)
 
-		newMessage.replace('5','4',1)
 		await client.send_message(message.channel, "It's 420 somewhere")
 
 	await client.process_commands(message)
