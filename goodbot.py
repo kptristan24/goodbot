@@ -29,7 +29,7 @@ def getUnits(str):
 #TODO
 def convertToTroll(unit, value):
 	if unit == '$' or unit == 'dollars':
-		return value * 1.29
+		return ("{}{}? That's like {} McDoubles".format(value, unit, int(value[0]) / 1.29))
 	return unit
 
 client = Bot(description="goodbot", command_prefix="#", pm_help = False)
@@ -69,11 +69,7 @@ async def on_message(message):
 	#if the message has numbers
 	if hasNumbers(message.content):
 		input = str(message.content)
-
-		print(convertToTroll(getUnits(input), getNumbers(input)))
-
-
-		await client.send_message(message.channel, "It's 420 somewhere")
+		await client.send_message(message.channel, convertToTroll(getUnits(input), getNumbers(input)))
 
 	await client.process_commands(message)
 	await asyncio.sleep(3)
