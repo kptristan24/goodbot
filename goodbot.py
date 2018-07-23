@@ -15,6 +15,23 @@ def getNumbers(str):
 			arr.append(s)
 	return arr
 
+def getUnits(str):
+	#Check if anything in the message matches a unit we know
+	units = [
+	"feet",
+	"$",
+	"dollars"
+	]
+	for unit in units:
+			if unit in str:
+				return unit
+
+#TODO
+def convertToTroll(unit, value):
+	if unit == '$' or unit == 'dollars':
+		return value * 1.29
+	return unit
+
 client = Bot(description="goodbot", command_prefix="#", pm_help = False)
 
 @client.event
@@ -53,7 +70,8 @@ async def on_message(message):
 	if hasNumbers(message.content):
 		input = str(message.content)
 
-		temp = getNumbers(input)
+		print(convertToTroll(getUnits(input), getNumbers(input)))
+
 
 		await client.send_message(message.channel, "It's 420 somewhere")
 
