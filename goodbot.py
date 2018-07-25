@@ -32,6 +32,8 @@ def getUnits(str):
 def convertToTroll(unit, value):
 	if unit == '$' or unit == 'dollars':
 		return ("{}{}? That's like {} McDoubles".format(int(value[0]), unit, int(int(value[0]) / 1.29)))
+	if unit == 'feet':
+		return ("{} {}? That's over {} Bananas long".format(int(value[0]), unit, int(int(value[0]) * 1.712)))
 	if unit == 'NONE':
 		return "s u c c"
 	return unit
