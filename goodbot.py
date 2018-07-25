@@ -29,7 +29,7 @@ def getUnits(str):
 #TODO
 def convertToTroll(unit, value):
 	if unit == '$' or unit == 'dollars':
-		return ("{}{}? That's like {} McDoubles".format(value, unit, int(value[0]) / 1.29))
+		return ("{}{}? That's like {} McDoubles".format(int(value[0]), unit, int(int(value[0]) / 1.29)))
 	return unit
 
 client = Bot(description="goodbot", command_prefix="#", pm_help = False)
