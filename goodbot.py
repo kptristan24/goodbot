@@ -10,6 +10,7 @@ def hasNumbers(inputString):
 
 def getNumbers(str):
 	arr = []
+	str = ''.join(c for c in str if c.isdigit())
 	for s in str.split():
 		if s.isdigit():
 			arr.append(s)
@@ -25,11 +26,14 @@ def getUnits(str):
 	for unit in units:
 			if unit in str:
 				return unit
+	return "NONE"
 
 #TODO
 def convertToTroll(unit, value):
 	if unit == '$' or unit == 'dollars':
 		return ("{}{}? That's like {} McDoubles".format(int(value[0]), unit, int(int(value[0]) / 1.29)))
+	if unit == 'NONE':
+		return "s u c c"
 	return unit
 
 client = Bot(description="goodbot", command_prefix="#", pm_help = False)
